@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "MSdJhqSXeyzk9PhB89FVfcwzaClo7zw5s7JSOcIQBwE=",
+  "Source": "API-BACKEND",
+  "BasePath": "_content/API-BACKEND",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
