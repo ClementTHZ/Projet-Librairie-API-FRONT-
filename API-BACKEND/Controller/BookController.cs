@@ -7,7 +7,6 @@ public class BookController : ControllerBase
 
     public async static Task GetAllBooks(HttpContext httpContext)
     {
-        var response = new StringBuilder();
         var books = BookServices.GetAllBooks();
         var booksArray = new Book[books.Rows.Count];
         for (int i = 0; i < books.Rows.Count; i++)
@@ -21,18 +20,17 @@ public class BookController : ControllerBase
                 Author = row["author"].ToString(),
             };
             booksArray[i] = book;
-            response.AppendLine($"{book.Id} - {book.Title} / Autheur : {book.Author}");
         }
-        httpContext.Response.ContentType = "text";
-        await httpContext.Response.WriteAsync(response.ToString());
+        httpContext.Response.ContentType = "application/json";
+        await httpContext.Response.WriteAsJsonAsync<Book[]>(booksArray);
     }
     public async static Task GetBookById(int id, HttpContext httpContext)
     {
         var currBook = BookServices.GetBookById(id);
-        var response = new StringBuilder();
+        var book = new Book();
         foreach (DataRow row in currBook.Rows)
         {
-            var book = new Book
+            var newBook = new Book
             {
                 Id = Convert.ToInt32(row["id"]),
                 Title = row["title"].ToString(),
@@ -40,11 +38,10 @@ public class BookController : ControllerBase
                 Author = row["author"].ToString(),
                 Quantity = row["quantity"].ToString(),
             };
-            response.AppendLine($"{book.Title} / Autheur : {book.Author}");
-            response.AppendLine($"Quantité: {book.Quantity}");
+            book = newBook;
         }
-        httpContext.Response.ContentType = "text";
-        await httpContext.Response.WriteAsync(response.ToString());
+        httpContext.Response.ContentType = "application/json";
+        await httpContext.Response.WriteAsJsonAsync<Book>(book);
     }
     public async static Task GetAllBooksOnStock(HttpContext httpContext)
     {
@@ -67,15 +64,28 @@ public class BookController : ControllerBase
     }
     public async static Task CreatedBook(HttpContext httpContext)
     {
+        var book = await httpContext.Request.ReadFromJsonAsync<Book>();
+        if (book != null && book.Title != null && book.Description != null && book.Author != null)
         {
-            var book = await httpContext.Request.ReadFromJsonAsync<Book>();
-            if (book != null)
-            {
-                BookServices.CreateBook(book.Title, book.Description, book.Author);
-                httpContext.Response.StatusCode = 201; // Created
-                await httpContext.Response.WriteAsync("✅ Book created successfully");
-            }
+            BookServices.CreateBook(book.Title, book.Description, book.Author);
+            httpContext.Response.StatusCode = 201; // Created
+            // await httpContext.Response.WriteAsync("✅ Book created successfully");
         }
+
+        /* Méthode avec données reçu depuis un formulaire :
+        var form = await httpContext.Request.ReadFormAsync();
+
+        var title = form["title"];
+        var description = form["description"];
+        var author = form["author"];
+
+        if (form != null)
+        {
+            BookServices.CreateBook(title, description, author);
+            httpContext.Response.StatusCode = 201; // Created
+            httpContext.Response.Redirect("http://localhost:5500/bookList.html");
+        }
+        */
     }
     public async static Task DeleteBook(int id, HttpContext httpContext)
     {
@@ -85,9 +95,11 @@ public class BookController : ControllerBase
     }
     public async static Task AddBook(int id, HttpContext httpContext)
     {
-        var book = await httpContext.Request.ReadFromJsonAsync<Book>();
-        if (book != null) BookServices.AddBook(id, Convert.ToInt32(book.Quantity));
-        httpContext.Response.ContentType = "plain/text";
-        await httpContext.Response.WriteAsync("✅ Quantity update with succes !");
+        BookServices.AddBook(id);
+        httpContext.Response.StatusCode = 200; // OK
+        // var book = await httpContext.Request.ReadFromJsonAsync<Book>();
+        // if (book != null) BookServices.AddBook(id);
+        // httpContext.Response.ContentType = "application/json";
+        // await httpContext.Response.WriteAsJsonAsync<Book>(book);
     }
 }

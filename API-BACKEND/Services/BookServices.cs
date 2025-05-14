@@ -34,11 +34,11 @@ public class BookServices
         }
 
     }
-    public static void AddBook(int id, int quantity)
+    public static void AddBook(int id)
     {
         try
         {
-            ExecuteQuery("UPDATE books SET quantity = quantity + @quantity WHERE id = @id", new Dictionary<string, object> { ["@quantity"] = quantity, ["@id"] = id });
+            ExecuteQuery("UPDATE books SET quantity = quantity + 1 WHERE id = @id", new Dictionary<string, object> { ["@id"] = id });
             var books = GetDataTable("SELECT * FROM books WHERE id = @id", new Dictionary<string, object> { ["@id"] = id });
             foreach (DataRow book in books.Rows)
             {

@@ -399,11 +399,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-2-Gestion-Bibliotheque\\API-BACKEND\\API-BACKEND.csproj",
+      "projectUniqueName": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-Librairie\\API-BACKEND\\API-BACKEND.csproj",
       "projectName": "API-BACKEND",
-      "projectPath": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-2-Gestion-Bibliotheque\\API-BACKEND\\API-BACKEND.csproj",
+      "projectPath": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-Librairie\\API-BACKEND\\API-BACKEND.csproj",
       "packagesPath": "C:\\Users\\ClémentTHOREZ\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-2-Gestion-Bibliotheque\\API-BACKEND\\obj\\",
+      "outputPath": "C:\\Users\\ClémentTHOREZ\\Documents\\C#\\Projet-C#\\Projet-Librairie\\API-BACKEND\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ClémentTHOREZ\\AppData\\Roaming\\NuGet\\NuGet.Config"
