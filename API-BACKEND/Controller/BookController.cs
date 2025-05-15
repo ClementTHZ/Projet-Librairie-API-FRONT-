@@ -45,9 +45,8 @@ public class BookController : ControllerBase
     }
     public async static Task GetAllBooksOnStock(HttpContext httpContext)
     {
-        var response = new StringBuilder();
-
         var books = BookServices.GetAllBooksOnStock();
+        var booksArray = new List<Book>();
         foreach (DataRow row in books.Rows)
         {
             var book = new Book
@@ -57,10 +56,10 @@ public class BookController : ControllerBase
                 Author = row["author"].ToString(),
                 Quantity = row["quantity"].ToString()
             };
-            response.AppendLine($"{book.Id} - {book.Title} / autheur: {book.Author} (Quantité: {book.Quantity})");
+            booksArray.Add(book);
         }
-        httpContext.Response.ContentType = "plain/text";
-        await httpContext.Response.WriteAsync(response.ToString());
+        httpContext.Response.ContentType = "application/json";
+        await httpContext.Response.WriteAsJsonAsync<List<Book>>(booksArray);
     }
     public async static Task CreatedBook(HttpContext httpContext)
     {

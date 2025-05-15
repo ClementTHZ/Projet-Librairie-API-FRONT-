@@ -26,28 +26,21 @@ public class EmpruntController
     }
     public async static Task GetEmpruntByUserId(int userId, HttpContext httpContext)
     {
-        var response = new StringBuilder();
-
-        var currUser = UserServices.GetUserById(userId);
-        foreach (DataRow row in currUser.Rows)
+        var emprunts = EmpruntServices.GetAllEmpruntsByUserId(userId);
+        var empruntsList = new List<Emprunt>();
+        foreach (DataRow row in emprunts.Rows)
         {
-            var user = new User { FirstName = row["firstname"].ToString() };
-            response.AppendLine($"Voici les emprunts de {user.FirstName}:\n");
-        }
-
-        var empruntsTable = EmpruntServices.GetAllEmpruntsByUserId(userId);
-        foreach (DataRow row in empruntsTable.Rows)
-        {
-            var bookTitle = row["booktitle"].ToString();
             var emprunt = new Emprunt
             {
                 Id = Convert.ToInt32(row["id"]),
+                UserId = Convert.ToInt32(row["userid"]),
+                BookId = Convert.ToInt32(row["bookid"]),
                 Created_At = Convert.ToDateTime(row["created_at"])
             };
-            response.AppendLine($"{emprunt.Id} - {bookTitle} | Date de l'emprunt: {emprunt.Created_At}");
+            empruntsList.Add(emprunt);
         }
-        httpContext.Response.ContentType = "plain/text";
-        await httpContext.Response.WriteAsync(response.ToString());
+        httpContext.Response.ContentType = "application/json";
+        await httpContext.Response.WriteAsJsonAsync<List<Emprunt>>(empruntsList);
     }
     public async static Task CreatedEmprunt(HttpContext httpContext)
     {

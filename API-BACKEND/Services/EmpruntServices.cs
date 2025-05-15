@@ -26,7 +26,7 @@ public class EmpruntServices
     public static DataTable GetAllEmpruntsByUserId(int userId)
     {
         var emprunt = GetDataTable(@"
-            SELECT emprunts.id, emprunts.created_at,  users.firstname as userfirstname, books.title as booktitle
+            SELECT emprunts.id, emprunts.created_at,  users.id as userid, books.id as bookid
             FROM emprunts
             INNER JOIN users ON emprunts.userid = users.id
             INNER JOIN books ON emprunts.bookid = books.id
