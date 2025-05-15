@@ -1,6 +1,12 @@
 const params = new URLSearchParams(window.location.search); // = params de l'URL
 const bookId = params.get("id"); 
 
+const deleteButton = document.getElementById("delete-button"); 
+deleteButton.addEventListener("click", () => {
+    deleteBook(bookId)
+    window.location.href="bookList.html"
+}); 
+
 async function addQuantity(id) {
     const url = `http://localhost:5183/books/${id}`
     const response = await fetch(url, {
@@ -36,6 +42,19 @@ async function bookDetails(id){
         h3.appendChild(a); 
     } catch (error) {
         console.log(error.message);
+    }
+}
+
+async function deleteBook(id) {
+    const url = `http://localhost:5183/books/${id}`; 
+    try {
+        const response = await fetch(url, {
+        method: "DELETE", 
+        }); 
+        console.log(response.status); 
+        location.reload; 
+    } catch (error) {
+        console.log(error.message)
     }
 }
 
