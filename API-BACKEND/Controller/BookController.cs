@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 public class BookController : ControllerBase
 {
-
     public async static Task GetAllBooks(HttpContext httpContext)
     {
         var books = BookServices.GetAllBooks();
@@ -18,6 +17,7 @@ public class BookController : ControllerBase
                 Title = row["title"].ToString(),
                 Description = row["description"].ToString(),
                 Author = row["author"].ToString(),
+                Quantity = Convert.ToInt32(row["quantity"])
             };
             booksArray[i] = book;
         }
@@ -36,7 +36,7 @@ public class BookController : ControllerBase
                 Title = row["title"].ToString(),
                 Description = row["description"].ToString(),
                 Author = row["author"].ToString(),
-                Quantity = row["quantity"].ToString(),
+                Quantity = Convert.ToInt32(row["quantity"])
             };
             book = newBook;
         }
@@ -54,7 +54,7 @@ public class BookController : ControllerBase
                 Id = Convert.ToInt32(row["id"]),
                 Title = row["title"].ToString(),
                 Author = row["author"].ToString(),
-                Quantity = row["quantity"].ToString()
+                Quantity = Convert.ToInt32(row["quantity"])
             };
             booksArray.Add(book);
         }

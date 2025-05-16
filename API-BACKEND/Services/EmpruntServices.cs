@@ -30,7 +30,8 @@ public class EmpruntServices
             FROM emprunts
             INNER JOIN users ON emprunts.userid = users.id
             INNER JOIN books ON emprunts.bookid = books.id
-            WHERE users.id = @id", new Dictionary<string, object> { ["@id"] = userId });
+            WHERE users.id = @id
+            ORDER BY emprunts.created_at ASC", new Dictionary<string, object> { ["@id"] = userId });
         return emprunt;
     }
 

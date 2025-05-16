@@ -45,9 +45,9 @@ public class EmpruntController
     public async static Task CreatedEmprunt(HttpContext httpContext)
     {
         var emprunt = await httpContext.Request.ReadFromJsonAsync<Emprunt>();
-        if (emprunt != null) EmpruntServices.CreateEmprunt((int)emprunt.UserId, (int)emprunt.BookId);
-        httpContext.Response.ContentType = "text";
-        await httpContext.Response.WriteAsync("✅ Emprunt has been created !");
+        if (emprunt != null) EmpruntServices.CreateEmprunt(emprunt.UserId ?? 0, emprunt.BookId);
+        httpContext.Response.StatusCode = 200;
+        // await httpContext.Response.WriteAsync("✅ Emprunt has been created !");
     }
     public async static Task DeletedEmprunt(int id, HttpContext httpContext)
     {
