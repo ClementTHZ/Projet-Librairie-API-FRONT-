@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Mon formulaire de création</title> 
+  <title>formulaire de création d'un livre</title> 
 </head>
 <body>
-    <h1>Formulaire de création</h1>
+    <h1>Formulaire de création d'un livre</h1>
     <form>
+      <div>
         <input type="text" name="title" id="input-title" placeholder="Entrer le titre du livre">
-        <input type="text" name="description" id="input-description" placeholder="Entrer une description">
+      </div>
+      <div>
+        <textarea name="description" rows="5" cols="40" id="input-description" placeholder="Entrer une description"></textarea>
+      </div>
+      <div>
         <input type="text" name="author" id="input-author" placeholder="Entrer l'autheur du livre">
+      </div>
         <button type="submit" id="add-book-button">Ajouter</button>
     </form>
     <script src="pages/bookForm.js"></script>

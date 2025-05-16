@@ -1,57 +1,35 @@
+const addUserButton = document.getElementById("add-user-button"); 
+addUserButton.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    const inputFirstName = document.getElementById("input-firstname")
+    const firstName = inputFirstName.value; 
+    
+    const inputLastName = document.getElementById("input-lastname")
+    const lastName = inputLastName.value; 
 
-const params = new URLSearchParams(window.location.search); 
-const userId = params.get("id"); 
-let bookIds = []; 
+    const inputAge = document.getElementById("input-age")
+    const age = inputAge.value; 
 
-const backUserButton = document.getElementById("back-button"); 
-backUserButton.href = `./userDetails.html?id=${userId}`
+    createUser(firstName, lastName, age); 
 
-function removeId(idToRemove){
-    bookIds = bookIds.filter(id => id !== idToRemove); 
-}
+    window.location.href = "./userList.html"; 
+})
 
-async function getAllBooksAvailable() {
-    const url = "http://localhost:5183/books/available"; 
-    try {
-        const response = await fetch(url); 
-        if(!response.ok) throw new Error(`Response Status: ${response.status}`)
-        const data = await response.json(); 
-        console.log(data)
-
-        const bookList = document.getElementById("new-emprunt-list")
-        data.forEach(book => {
-            const div = document.createElement("div"); 
-
-            const input = document.createElement("input"); 
-            input.type = "checkbox"; 
-            input.id = `input-${book.title.replace(" ", "-")}`;
-            input.name = book.title.replace(" ", "-"); 
-            input.checked = false;
-
-            if(input.checked) bookIds.push(book.id)
-
-            input.addEventListener("change", () => {
-                if(input.checked){
-                    input.setAttribute("checked", "checked");
-                    bookIds.push(book.id)
-                    console.log(bookIds); 
-                }  else {
-                    input.removeAttribute("checked"); 
-                    removeId(book.id)
-                    console.log(bookIds); 
-                } 
-        });
-
-            const label = document.createElement("label"); 
-            label.textContent = `${book.title} / auteur: ${book.author} `
-
-            div.appendChild(input); 
-            div.appendChild(label); 
-            bookList.appendChild(div); 
-        });
-    } catch (error) {
-        console.log(error.message)
+async function createUser(firstName, lastName, age){
+    const user = {
+        firstName: firstName, 
+        lastName: lastName, 
+        age: age
     }
-}
 
-getAllBooksAvailable(); 
+    const url = "http://localhost:5183/users"
+
+    const response = await fetch(url, {
+        method: "POST", 
+        headers: {
+            "content-type": "application/json"
+        }, 
+        body: JSON.stringify(user)
+    }); 
+    console.log(response.status)
+}

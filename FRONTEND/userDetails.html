@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="css/style.css">
   <title>Ma page livre</title>
     <script src="https://kit.fontawesome.com/a524695012.js" crossorigin="anonymous"></script>
 </head>
@@ -11,8 +12,14 @@
   <legend>Sélectionne un ou plusieurs livre à retourner</legend>
 </fieldset>
     <a href="userList.html"><button>Retour</button></a>
+    <button id="delete-button">Supprimer l'utilisateur</button>
     <button id="return-button">Retourner un livre</button>
-    <a href="addUserForm.html" id="link-add-button"><button>Emprunter un livre</button></a>
+    <a id="link-add-button"><button>Emprunter un livre</button></a>
+    <div id="overlay"></div>
+    <div id="popup">
+      <p id="text-popup"></p>
+      <button id="closePopup">Fermer</button>
+    </div>
     <script src="pages/userDetail.js"></script>
 </body>
 </html>

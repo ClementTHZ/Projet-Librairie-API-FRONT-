@@ -1,4 +1,7 @@
-function createSubmit() {
+
+const addBookButton = document.getElementById("add-book-button"); 
+addBookButton.addEventListener("click", (event) => {
+    event.preventDefault(); 
 
     const inputTitle  = document.getElementById("input-title"); 
     const title = inputTitle.value; 
@@ -9,8 +12,9 @@ function createSubmit() {
     const inputAuthor  = document.getElementById("input-author"); 
     const author = inputAuthor.value; 
 
-    createBook(title, description, author); 
-}
+    createBook(title, description, author);
+    window.location.href = "http://localhost:5500/bookList.html"; 
+})
 
 async function createBook(title, description, author) {
     const book = {
@@ -30,9 +34,3 @@ async function createBook(title, description, author) {
     console.log(response.status); 
 }
 
-const addBookButton = document.getElementById("add-book-button"); 
-addBookButton.addEventListener("click", (event) => {
-    event.preventDefault(); 
-    createSubmit(); 
-    window.location.href = "http://localhost:5500/bookList.html"; 
-})

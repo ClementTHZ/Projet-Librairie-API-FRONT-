@@ -14,7 +14,8 @@ async function getAllBooks() {
             link.href = `./bookDetail.html?id=${bookId}`
 
             const li = document.createElement("li")
-            li.textContent = `${book.title} / auteur: ${book.author} `
+            if (book.quantity > 0) li.textContent = `${book.title} / auteur: ${book.author}`
+            else li.textContent = `${book.title} / auteur: ${book.author} (En rupture)`
  
             link.appendChild(li)
             bookList.appendChild(link)

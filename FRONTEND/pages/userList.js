@@ -1,4 +1,4 @@
-async function getAllUSers(params) {
+async function getAllUSers() {
     const url = "http://localhost:5183/users"; 
     try {
         const response = await fetch(url); 
