@@ -56,7 +56,7 @@ async function getAllBooksAvailable() {
             if (book.quantity > 3)label.textContent = `${book.title} / auteur: ${book.author} `;
             else if (book.quantity > 1) label.textContent = `${book.title} / auteur: ${book.author} (${book.quantity} exemplaires restant)`;
             else label.textContent = `${book.title} / auteur: ${book.author} (plus que ${book.quantity} exemplaire restant)`;
-
+            label.classList.add("p-1")
             div.appendChild(input); 
             div.appendChild(label); 
             bookList.appendChild(div); 

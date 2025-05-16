@@ -11,11 +11,13 @@ async function getAllBooks() {
             const bookId = book.id
 
             const link = document.createElement("a")
-            link.href = `./bookDetail.html?id=${bookId}`
+            link.classList.add("text-decoration-none"); 
+            link.href = `./bookDetail.html?id=${bookId}`; 
 
             const li = document.createElement("li")
             if (book.quantity > 0) li.textContent = `${book.title} / auteur: ${book.author}`
-            else li.textContent = `${book.title} / auteur: ${book.author} (En rupture)`
+            else li.textContent = `${book.title} / auteur: ${book.author} (En rupture)` // TODO color red
+            li.classList.add("text-black")
  
             link.appendChild(li)
             bookList.appendChild(link)

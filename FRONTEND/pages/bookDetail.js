@@ -33,6 +33,8 @@ async function bookDetails(id){
         const addQuantityButton = document.createElement("i");
         addQuantityButton.classList.add("fa-solid");
         addQuantityButton.classList.add("fa-plus");
+        addQuantityButton.classList.add("text-success");
+        addQuantityButton.classList.add("p-3");
         addQuantityButton.addEventListener("click", () => {
             addQuantity(bookId); 
             location.reload; 

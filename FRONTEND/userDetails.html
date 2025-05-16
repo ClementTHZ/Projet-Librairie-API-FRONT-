@@ -6,20 +6,44 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Ma page livre</title>
     <script src="https://kit.fontawesome.com/a524695012.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<fieldset id="emprunt-container">
-  <legend>Sélectionne un ou plusieurs livre à retourner</legend>
-</fieldset>
-    <a href="userList.html"><button>Retour</button></a>
-    <button id="delete-button">Supprimer l'utilisateur</button>
-    <button id="return-button">Retourner un livre</button>
-    <a id="link-add-button"><button>Emprunter un livre</button></a>
-    <div id="overlay"></div>
-    <div id="popup">
-      <p id="text-popup"></p>
-      <button id="closePopup">Fermer</button>
+<body class="d-flex flex-column min-vh-100">
+
+  <div class="d-flex flex-column align-items-center">
+    <div class="m-4">
+      <fieldset id="emprunt-container">
+        <div class="mt-4 mb-4">
+          <h1>Sélectionne un ou plusieurs livre à retourner</h1>
+        </div>
+      </fieldset>
     </div>
+
+    <div>
+      <a href="userList.html" class="text-decoration-none"><button class="btn btn-success">Retour</button></a>
+      <button id="delete-button" class="btn btn-success">Supprimer l'utilisateur</button>
+      <button id="return-button" class="btn btn-success">Retourner un livre</button>
+      <a id="link-add-button" class="text-decoration-none"><button class="btn btn-success">Emprunter un livre</button></a>
+    </div>
+        <div id="overlay"></div>
+        <div id="popup">
+          <p id="text-popup"></p>
+          <button id="closePopup">Fermer</button>
+        </div>
+  </div>
+
+    <footer class="bg-success text-white text-center py-4 mt-auto">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Bibliothèque virtuelle</p>
+      <p class="mb-0">
+        <a href="#" class="text-white text-decoration-none me-3"></a>
+        <a href="#" class="text-white text-decoration-none me-3"></a>
+        <a href="#" class="text-white text-decoration-none"></a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="pages/userDetail.js"></script>
 </body>
 </html>

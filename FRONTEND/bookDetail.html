@@ -4,16 +4,35 @@
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Ma page livre</title>
-    <script src="https://kit.fontawesome.com/a524695012.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a524695012.js" crossorigin="anonymous"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1 id="book-title"></h1>
-  <h2 id="book-author"></h2>
-  <p id="book-description"></p>
-  <h3 id="book-quantity"></h3>
-  <button id="delete-button">Supprimer</button>
-  <a href="bookList.html"><button>Retour</button></a>
+<body class="d-flex flex-column min-vh-100">
+  <div class="d-flex flex-column align-items-center text-center">
+    <div class="mt-5 mb-3">
+      <h1 id="book-title"></h1>
+      <p id="book-description"></p>
+      <h2 id="book-author"></h2>
+      <h3 id="book-quantity"></h3>
+    </div>
+    <div>
+      <button id="delete-button" class="btn btn-success">Supprimer</button>
+      <a href="bookList.html"><button class="btn btn-success">Retour</button></a>
+    </div>
+  </div>
+
+  <footer class="bg-success text-white text-center py-4 mt-auto">
+    <div class="container">
+      <p class="mb-1">&copy; 2025 Bibliothèque virtuelle</p>
+      <p class="mb-0">
+        <a href="#" class="text-white text-decoration-none me-3"></a>
+        <a href="#" class="text-white text-decoration-none me-3"></a>
+        <a href="#" class="text-white text-decoration-none"></a>
+      </p>
+    </div>
+  </footer>
 
   <script src="pages/bookDetail.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

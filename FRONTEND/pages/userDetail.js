@@ -46,7 +46,7 @@ async function getUserEmprunt(userId) {
                 input.removeAttribute("checked"); 
                 removeId(emprunt.id)
                 console.log(empruntIds); 
-            } 
+            }
         }); 
 
         const label = document.createElement("label"); 
@@ -57,7 +57,8 @@ async function getUserEmprunt(userId) {
         const hours = String(date.getHours()).padStart(2, '0'); 
         const minutes = String(date.getMinutes()).padStart(2, '0'); 
         const formattedDate = `${day}/${month}/${year} à ${hours}:${minutes}`; 
-        label.textContent = `${book.title} - Date de l'emprunt: ${formattedDate}`; 
+        label.textContent = `Titre : ${book.title} --- Date de l'emprunt : ${formattedDate}`; 
+        label.classList.add("p-2")
         
         div.appendChild(input); 
         div.appendChild(label); 
