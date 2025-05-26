@@ -116,3 +116,5 @@ C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\obj\
 C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\obj\Debug\net9.0\API-BACKEND.pdb
 C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\obj\Debug\net9.0\API-BACKEND.genruntimeconfig.cache
 C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\obj\Debug\net9.0\ref\API-BACKEND.dll
+C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\bin\Debug\net9.0\package-lock.json
+C:\Users\ClémentTHOREZ\Documents\C#\Projet-C#\Projet-Librairie\API-BACKEND\bin\Debug\net9.0\package.json

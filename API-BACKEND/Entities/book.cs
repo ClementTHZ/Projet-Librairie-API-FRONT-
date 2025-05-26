@@ -5,4 +5,5 @@ public class Book
     public string? Description { get; set; }
     public string? Author { get; set; }
     public int? Quantity { get; set; }
+    public string? Picture { get; set; }
 }

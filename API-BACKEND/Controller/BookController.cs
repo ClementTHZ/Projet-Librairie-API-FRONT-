@@ -17,7 +17,8 @@ public class BookController : ControllerBase
                 Title = row["title"].ToString(),
                 Description = row["description"].ToString(),
                 Author = row["author"].ToString(),
-                Quantity = Convert.ToInt32(row["quantity"])
+                Quantity = Convert.ToInt32(row["quantity"]),
+                Picture = row["picture"].ToString()
             };
             booksArray[i] = book;
         }
@@ -36,7 +37,8 @@ public class BookController : ControllerBase
                 Title = row["title"].ToString(),
                 Description = row["description"].ToString(),
                 Author = row["author"].ToString(),
-                Quantity = Convert.ToInt32(row["quantity"])
+                Quantity = Convert.ToInt32(row["quantity"]),
+                Picture = row["picture"].ToString()
             };
             book = newBook;
         }
@@ -64,9 +66,9 @@ public class BookController : ControllerBase
     public async static Task CreatedBook(HttpContext httpContext)
     {
         var book = await httpContext.Request.ReadFromJsonAsync<Book>();
-        if (book != null && book.Title != null && book.Description != null && book.Author != null)
+        if (book != null && book.Title != null && book.Description != null && book.Author != null && book.Picture != null)
         {
-            BookServices.CreateBook(book.Title, book.Description, book.Author);
+            BookServices.CreateBook(book.Title, book.Description, book.Author, book.Picture);
             httpContext.Response.StatusCode = 201; // Created
             // await httpContext.Response.WriteAsync("✅ Book created successfully");
         }

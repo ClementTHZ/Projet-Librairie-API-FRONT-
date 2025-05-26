@@ -19,11 +19,11 @@ public class BookServices
         return book;
     }
 
-    public static string CreateBook(string title, string description, string author)
+    public static string CreateBook(string title, string description, string author, string picture)
     {
         try
         {
-            var table = GetDataTable("INSERT INTO books (title, description, author, quantity) VALUES (@title, @description, @author, 0); SELECT id FROM books ORDER BY id DESC LIMIT 1", new Dictionary<string, object> { ["@title"] = title, ["@description"] = description, ["@author"] = author });
+            var table = GetDataTable("INSERT INTO books (title, description, author, quantity, picture) VALUES (@title, @description, @author, 0, @picture); SELECT id FROM books ORDER BY id DESC LIMIT 1", new Dictionary<string, object> { ["@title"] = title, ["@description"] = description, ["@author"] = author, ["@picture"] = picture });
             System.Console.WriteLine("✅ Le livre à été crée avec succès");
             return $"Annonce crée avec l'ID: {table.Rows[0]["id"]}";
         }
