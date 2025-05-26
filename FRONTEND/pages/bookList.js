@@ -10,17 +10,45 @@ async function getAllBooks() {
         data.forEach(book => {
             const bookId = book.id
 
-            const link = document.createElement("a")
-            link.classList.add("text-decoration-none"); 
-            link.href = `./bookDetail.html?id=${bookId}`; 
+            
+            const col = document.createElement("div")
+            col.classList.add("col-md-2"); 
+            col.classList.add("mb-4"); 
 
-            const li = document.createElement("li")
-            if (book.quantity > 0) li.textContent = `${book.title} / auteur: ${book.author}`
-            else li.textContent = `${book.title} / auteur: ${book.author} (En rupture)` // TODO color red
-            li.classList.add("text-black")
- 
-            link.appendChild(li)
-            bookList.appendChild(link)
+            const img = document.createElement("img"); 
+            img.src = book.picture; 
+            img.classList.add("card-img-top", "img-cover"); 
+            
+            const divCard = document.createElement("div");
+            divCard.classList.add("card", "h-100"); 
+            divCard.style.width = "100%"; 
+
+            const divBody = document.createElement("div")
+            divBody.classList.add("card-body", "d-flex", "flex-column")
+
+            const cardTitle = document.createElement("h5")
+            if (book.quantity > 0) cardTitle.textContent = `${book.title}`
+            else  cardTitle.textContent = `${book.title} (En rupture)` // TODO color red
+            cardTitle.classList.add("mb-3")
+
+            const a = document.createElement("a"); 
+            a.classList.add("text-decoration-none", "btn", "btn-success", "mt-auto", "w-50"); 
+            a.href = `./bookDetail.html?id=${bookId}`; 
+            a.textContent = "Détail"; 
+
+
+            divBody.appendChild(cardTitle)
+            divBody.appendChild(a)
+
+            divCard.appendChild(img)
+            divCard.appendChild(divBody)
+
+            col.appendChild(divCard)
+            bookList.appendChild(col)
+            // link.appendChild(li)
+            // div.appendChild(img)
+            // div.appendChild(link)
+            // bookList.appendChild(div)
         });
     } catch (error) {
         console.log(error.message)

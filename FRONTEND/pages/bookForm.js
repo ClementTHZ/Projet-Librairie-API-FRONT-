@@ -12,15 +12,19 @@ addBookButton.addEventListener("click", (event) => {
     const inputAuthor  = document.getElementById("input-author"); 
     const author = inputAuthor.value; 
 
-    createBook(title, description, author);
+    const inputPicture  = document.getElementById("input-picture"); 
+    const picture = inputPicture.value; 
+
+    createBook(title, description, author, picture);
     window.location.href = "http://localhost:5500/bookList.html"; 
 })
 
-async function createBook(title, description, author) {
+async function createBook(title, description, author, picture) {
     const book = {
         title: title, 
         description: description, 
         author: author, 
+        picture: picture
     }; 
 
     const url = "http://localhost:5183/books"

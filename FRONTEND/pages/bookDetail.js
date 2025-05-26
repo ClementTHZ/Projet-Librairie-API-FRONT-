@@ -22,6 +22,14 @@ async function bookDetails(id){
         if(!response.ok) throw new Error(`Response Status: ${response.status}`); 
         const data = await response.json(); 
 
+        const imgContainer = document.getElementById("img-container")
+
+        const img = document.createElement("img"); 
+        img.src = data.picture; 
+        img.classList.add("img-fluid", "w-100", "mb-4", "rounded")
+
+        imgContainer.appendChild(img)
+
         document.getElementById("book-title").textContent = data.title; 
         document.getElementById("book-description").textContent = data.description; 
         document.getElementById("book-author").textContent = `Auteur: ${data.author}`;
